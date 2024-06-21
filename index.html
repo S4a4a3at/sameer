@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main-container" id="mainContainer">
+      <div class="content-container" id="conContainer">
+        <div class="heading-container i">
+          <label for="heading">Question</label>
+          <input id="heading" type="text" placeholder="Enter Question" />
+        </div>
+        <div class="heading-container i">
+          <label for="link">Link</label>
+          <input id="link" type="URL" placeholder="Enter URL" />
+        </div>
+        <div class="heading-container i">
+          <label for="op1">Option 1</label>
+          <input id="op1" type="text" placeholder="Enter Option 1" />
+        </div>
+        <div class="heading-container i">
+          <label for="op2">Option 2</label>
+          <input id="op2" type="text" placeholder="Enter Option 2" />
+        </div>
+        <div class="heading-container i">
+          <label for="op3">Option 3</label>
+          <input id="op3" type="text" placeholder="Enter Option 3" />
+        </div>
+        <div class="heading-container i">
+          <label for="op4">Option 4</label>
+          <input id="op4" type="text" placeholder="Enter Option 4" />
+        </div>
+        <div class="heading-container i">
+          <label for="background">Background Color</label>
+          <input
+            id="background"
+            type="text"
+            placeholder="Enter Background Color in Hex"
+          />
+        </div>
+        <button id="next">>>></button>
+      </div>
+      <div class="d-none next-container" id="nextContainer"></div>
+    </div>
+
+    <script>
+      const mainContainer = document.getElementById("mainContainer");
+      const heading = document.getElementById("heading");
+      const link = document.getElementById("link");
+      const op1 = document.getElementById("op1");
+      const op2 = document.getElementById("op2");
+      const op3 = document.getElementById("op3");
+      const op4 = document.getElementById("op4");
+      const background = document.getElementById("background");
+      const nextBtn = document.getElementById("next");
+      const conContainer = document.getElementById("conContainer");
+      const nextContainer = document.getElementById("nextContainer");
+      const opContainer = document.createElement("div");
+      opContainer.classList.add("op-container");
+      const opContainer2 = document.createElement("div");
+      opContainer2.classList.add("op-container");
+
+      let headingValue = "";
+      let linkValue = "";
+      let op1Value = "";
+      let op2Value = "";
+      let op3Value = "";
+      let op4Value = "";
+      let backValue = "";
+
+      heading.addEventListener("input", (e) => {
+        headingValue = e.target.value;
+        console.log(headingValue);
+      });
+
+      link.addEventListener("input", (e) => {
+        linkValue = e.target.value;
+        console.log(linkValue);
+      });
+
+      op1.addEventListener("input", (e) => {
+        op1Value = e.target.value;
+        console.log(op1Value);
+      });
+
+      op2.addEventListener("input", (e) => {
+        op2Value = e.target.value;
+        console.log(op2Value);
+      });
+
+      op3.addEventListener("input", (e) => {
+        op3Value = e.target.value;
+        console.log(op3Value);
+      });
+
+      op4.addEventListener("input", (e) => {
+        op4Value = e.target.value;
+        console.log(op4Value);
+      });
+
+      background.addEventListener("input", (e) => {
+        backValue = e.target.value;
+        console.log(backValue);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        conContainer.style.display = "none";
+        nextContainer.classList.remove("d-none");
+
+        const nHeading = document.createElement("h2");
+        const nLink = document.createElement("img");
+        const nOp1 = document.createElement("h2");
+        const nOp2 = document.createElement("h2");
+        const nOp3 = document.createElement("h2");
+        const nOp4 = document.createElement("h2");
+
+        nHeading.textContent = "Q - " + headingValue;
+        nLink.setAttribute("src", linkValue);
+        nLink.classList.add("n-img");
+        nOp1.textContent = "(A.) " + op1Value;
+        nOp2.textContent = "(B.) " + op2Value;
+        nOp3.textContent = "(C.) " + op3Value;
+        nOp4.textContent = "(D.) " + op4Value;
+
+        nextContainer.appendChild(nHeading);
+        nextContainer.appendChild(nLink);
+        opContainer.appendChild(nOp1);
+        opContainer.appendChild(nOp2);
+        nextContainer.appendChild(opContainer);
+        opContainer2.appendChild(nOp3);
+        opContainer2.appendChild(nOp4);
+        nextContainer.appendChild(opContainer2);
+        mainContainer.style.backgroundColor = backValue;
+      });
+    </script>
+  </body>
+</html>
